@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * The purpose of this program is to compare the use of iteration and recursive functions.
  * A file is read into a string and both the iterative and recursive methods are run to check
- * that each line is palindrome. If the line is a palindrome, the program returns a message stating so. 
+ * that each line is palindrome. If the line is a palindrome, the program returns a message stating so.
  */
 
 public class Lab5 {
