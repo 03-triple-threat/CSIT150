@@ -26,7 +26,6 @@ public class GameBoard {
     }
 
     public void playerMove(int position, Player p) {
-
     }
 }
 
