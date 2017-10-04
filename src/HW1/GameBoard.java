@@ -26,6 +26,14 @@ public class GameBoard {
     }
 
     public void playerMove(int position, Player p) {
+
+        for (int i = 0; i < gameBoard.length; i++) {
+            for (int j = 0; j < gameBoard[i].length; j++) {
+                if ((position != 'X')&& (position != 'O')) {
+                    gameBoard[i][j] = 
+                }
+            }
+        }
     }
 }
 
