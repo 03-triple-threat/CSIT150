@@ -11,6 +11,8 @@ public class Player {
         name = inName;
     }
 
+    public char getName(){return name;}
+
     public String toString() {
         String playerInfo = "";
         return playerInfo;

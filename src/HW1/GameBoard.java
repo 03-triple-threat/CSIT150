@@ -10,7 +10,7 @@ public class GameBoard {
 
         for (int i = 0; i < gameBoard.length; i++) {
             for (int j = 0; j < gameBoard[i].length; j++) {
-                gameBoard[i][j] = (char)('0' + spaceOnBoard++);
+                gameBoard[i][j] = (char) ('0' + spaceOnBoard++);
             }
         }
     }
@@ -28,34 +28,53 @@ public class GameBoard {
 //    public boolean playerMove(int position, Player p) {
 //
 //        boolean validMove = true;
-//
 //        char value = (char)('0' + position);
 //
-//        for (int i = 0; i < gameBoard.length; i++) {
-//            for (int j = 0; j < gameBoard[i].length; j++) {
-//                if ((value != 'X') && (value != 'O')) {
-//                    validMove = true;
-//                }
-//                else {
-//                    validMove = false;
-//                    System.out.println("Invalid Move");
-//                }
-//            }
-//        }
-//
-//        //Work to set position chosen to player mark
 //        if(validMove) {
 //            for (int i = 0; i < gameBoard.length; i++){
 //                for (int j = 0; j < gameBoard[i].length; j++) {
 //                    if (value == gameBoard[i][j]) {
-//                        gameBoard[i][j] = ;
+//                        gameBoard[i][j] = p.getName();
 //                    }
 //                }
 //            }
 //        }
-//
 //        return validMove;
 //    }
+
+
+    public boolean playerMove(int position, Player p) {
+
+        boolean validMove = true;
+
+        char value = (char) ('0' + position);
+
+        for (int i = 0; i < gameBoard.length; i++) {
+            for (int j = 0; j < gameBoard[i].length; j++) {
+                if ((value != 'X') && (value != 'O')) {
+                    validMove = true;
+                } else {
+                    validMove = false;
+                }
+            }
+        }
+
+////        if (validMove = false) {
+////            System.out.println("Invalid Move");
+//        }
+
+        //Work to set position chosen to player mark
+        if (validMove) {
+            for (int i = 0; i < gameBoard.length; i++) {
+                for (int j = 0; j < gameBoard[i].length; j++) {
+                    if (value == gameBoard[i][j]) {
+                        gameBoard[i][j] = p.getName();
+                    }
+                }
+            }
+        } 
+        return validMove;
+    }
 }
 
 //Notes for the HW
