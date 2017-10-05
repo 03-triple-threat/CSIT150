@@ -25,16 +25,37 @@ public class GameBoard {
         }
     }
 
-    public void playerMove(int position, Player p) {
-
-        for (int i = 0; i < gameBoard.length; i++) {
-            for (int j = 0; j < gameBoard[i].length; j++) {
-                if ((position != 'X')&& (position != 'O')) {
-                    gameBoard[i][j] = 
-                }
-            }
-        }
-    }
+//    public boolean playerMove(int position, Player p) {
+//
+//        boolean validMove = true;
+//
+//        char value = (char)('0' + position);
+//
+//        for (int i = 0; i < gameBoard.length; i++) {
+//            for (int j = 0; j < gameBoard[i].length; j++) {
+//                if ((value != 'X') && (value != 'O')) {
+//                    validMove = true;
+//                }
+//                else {
+//                    validMove = false;
+//                    System.out.println("Invalid Move");
+//                }
+//            }
+//        }
+//
+//        //Work to set position chosen to player mark
+//        if(validMove) {
+//            for (int i = 0; i < gameBoard.length; i++){
+//                for (int j = 0; j < gameBoard[i].length; j++) {
+//                    if (value == gameBoard[i][j]) {
+//                        gameBoard[i][j] = ;
+//                    }
+//                }
+//            }
+//        }
+//
+//        return validMove;
+//    }
 }
 
 //Notes for the HW
