@@ -72,7 +72,7 @@ public class GameBoard {
                     }
                 }
             }
-        } 
+        }
         return validMove;
     }
 }
