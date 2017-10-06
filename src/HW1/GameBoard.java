@@ -91,4 +91,3 @@ public class GameBoard {
 //int current = 0;
 //current = (current + 1) % 2
 //plist[current]
-
