@@ -3,6 +3,7 @@ package HW1;
 public class GameBoard {
     private char[][] gameBoard;
 
+    //Default constructor of the gameboard
     public GameBoard() {
         gameBoard = new char[3][3];
 
@@ -15,6 +16,7 @@ public class GameBoard {
         }
     }
 
+    //Displays the board
     public void showBoard() {
 
         for (int i = 0; i < gameBoard.length; i++) {
@@ -25,55 +27,45 @@ public class GameBoard {
         }
     }
 
-//    public boolean playerMove(int position, Player p) {
-//
-//        boolean validMove = true;
-//        char value = (char)('0' + position);
-//
-//        if(validMove) {
-//            for (int i = 0; i < gameBoard.length; i++){
-//                for (int j = 0; j < gameBoard[i].length; j++) {
-//                    if (value == gameBoard[i][j]) {
-//                        gameBoard[i][j] = p.getName();
-//                    }
-//                }
-//            }
-//        }
-//        return validMove;
-//    }
-
-
+    //Completed player move
     public boolean playerMove(int position, Player p) {
 
         boolean validMove = true;
 
         char value = (char) ('0' + position);
 
-        for (int i = 0; i < gameBoard.length; i++) {
-            for (int j = 0; j < gameBoard[i].length; j++) {
-                if ((value != 'X') && (value != 'O')) {
-                    validMove = true;
-                } else {
-                    validMove = false;
-                }
-            }
-        }
+        char row = (char) ((position - 1) / 3);
+        char col = (char) ((position - 1) % 3);
 
-////        if (validMove = false) {
-////            System.out.println("Invalid Move");
-//        }
+        if (gameBoard[row][col] == value) {
+            validMove = true;
+            gameBoard[row][col] = p.getName();
 
-        //Work to set position chosen to player mark
-        if (validMove) {
-            for (int i = 0; i < gameBoard.length; i++) {
-                for (int j = 0; j < gameBoard[i].length; j++) {
-                    if (value == gameBoard[i][j]) {
-                        gameBoard[i][j] = p.getName();
-                    }
-                }
-            }
+        } else {
+            validMove = false;
         }
         return validMove;
+    }
+
+    public boolean checkForWinner(){
+
+        boolean winner = false;
+
+        int i;
+
+        for (i = 0; i < 3; i++) {
+            if (gameBoard[i][0] == gameBoard[i][1] &&
+                    gameBoard[i][0] == gameBoard[i][2]) {
+                winner = true;
+            } if (gameBoard[0][i] == gameBoard[1][i] &&
+                    gameBoard[1][i] == gameBoard[2][i]) {
+                winner = true;
+            }
+        }
+
+        if(gameBoard[0][0] == gameBoard[1][1] &&)
+
+        return winner;
     }
 }
 

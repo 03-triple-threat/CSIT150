@@ -17,8 +17,10 @@ public class TicTacToeGameDriver {
         gBoard.playerMove(4, O);
         gBoard.playerMove(9, X);
         gBoard.playerMove(3, X);
-        gBoard.playerMove(6, X);
+//        gBoard.playerMove(6, X);
         gBoard.playerMove(6, O);
+        gBoard.playerMove(6, X);
+        gBoard.playerMove(4, X);
 
         gBoard.showBoard();
     }
