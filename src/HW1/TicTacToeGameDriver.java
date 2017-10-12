@@ -1,6 +1,7 @@
 package HW1;
 
 import java.security.PublicKey;
+import java.util.Scanner;
 
 /**
  * Created by ajhurtado3 on 9/21/17.
@@ -15,84 +16,118 @@ public class TicTacToeGameDriver {
         Player X = new Player('X');
         Player O = new Player('O');
 
-        //Game 1 example
-        gBoard.playerMove(1, X);
-        gBoard.playerMove(2, O);
-        gBoard.playerMove(3, X);
-        gBoard.playerMove(4, O);
-        gBoard.playerMove(5, X);
-        gBoard.playerMove(6, O);
-        gBoard.playerMove(7, X);
-        gBoard.playerMove(8, O);
-        gBoard.playerMove(9, X);
+        Player[] pList = new Player[2];
+        pList[0] = X;
+        pList[1] = O;
 
-        gBoard.showBoard();
-        gBoard.checkForWinner();
+        int current = 1;
 
-        if (gBoard.checkForWinner()) {
-            System.out.println("Game Over!");
-        }
+        int moveCount;
 
-        if (gBoard.checkForWinner() == false) {
-            System.out.printf("Cat's game!");
-        }
 
-        System.out.println("\n");
+//
+//        //Game 1 example
+//        gBoard.playerMove(1, X);
+//        gBoard.playerMove(2, O);
+//        gBoard.playerMove(3, X);
+//        gBoard.playerMove(4, O);
+//        gBoard.playerMove(5, X);
+//        gBoard.playerMove(6, O);
+//        gBoard.playerMove(7, X);
+//        gBoard.playerMove(8, O);
+//        gBoard.playerMove(9, X);
+//
+//        gBoard.showBoard();
+//        gBoard.checkForWinner();
+//
+//        if (gBoard.checkForWinner()) {
+//            System.out.println("Game Over!");
+//        }
+//
+//        if (gBoard.checkForWinner() == false) {
+//            System.out.printf("Cat's game!");
+//        }
+//
+//        System.out.println("\n");
+//
+//        //Game 2 example
+//
+//        //Creates the gameboard
+//        GameBoard gBoard2 = new GameBoard();
+//
+//        gBoard2.playerMove(1, X);
+//        gBoard2.playerMove(3, O);
+//        gBoard2.playerMove(2, X);
+//        gBoard2.playerMove(5, O);
+//        gBoard2.playerMove(4, X);
+//        gBoard2.playerMove(7, O);
+//        gBoard2.playerMove(6, X);
+//        gBoard2.playerMove(8, O);
+//        gBoard2.playerMove(9, X);
+//
+//        gBoard2.showBoard();
+//        gBoard2.checkForWinner();
+//
+//        if (gBoard2.checkForWinner()) {
+//            System.out.println("Game Over!");
+//        }
+//
+//        if (gBoard2.checkForWinner() == false) {
+//            System.out.printf("Cat's game!");
+//        }
+//
+//        System.out.println("\n");
+//
+//        //Game 3 example
+//
+//        GameBoard gBoard3 = new GameBoard();
+//
+//        gBoard3.playerMove(1, X);
+//        gBoard3.playerMove(3, O);
+//        gBoard3.playerMove(2, X);
+//        gBoard3.playerMove(5, O);
+//        gBoard3.playerMove(6, X);
+//        gBoard3.playerMove(4, O);
+//        gBoard3.playerMove(7, X);
+//        gBoard3.playerMove(8, O);
+//        gBoard3.playerMove(9, X);
+//
+//        gBoard3.showBoard();
+//        gBoard3.checkForWinner();
+//
+//        if (gBoard3.checkForWinner()) {
+//            System.out.println("Game Over!");
+//        }
+//
+//        if (gBoard3.checkForWinner() == false) {
+//            System.out.printf("Cat's game!");
+//        }
 
-        //Game 2 example
 
-        //Creates the gameboard
-        GameBoard gBoard2 = new GameBoard();
+        while (gBoard.checkForWinner() == false) {
 
-        gBoard2.playerMove(1, X);
-        gBoard2.playerMove(3, O);
-        gBoard2.playerMove(2, X);
-        gBoard2.playerMove(5, O);
-        gBoard2.playerMove(4, X);
-        gBoard2.playerMove(7, O);
-        gBoard2.playerMove(6, X);
-        gBoard2.playerMove(8, O);
-        gBoard2.playerMove(9, X);
+            Scanner input = new Scanner(System.in);
 
-        gBoard2.showBoard();
-        gBoard2.checkForWinner();
+            int playerPosition;
 
-        if (gBoard2.checkForWinner()) {
-            System.out.println("Game Over!");
-        }
+            current = (current + 1) % 2;
 
-        if (gBoard2.checkForWinner() == false) {
-            System.out.printf("Cat's game!");
-        }
+            System.out.println("Player " + pList[current].getName() +
+                    ", enter a position: \n");
 
-        System.out.println("\n");
+            playerPosition = input.nextInt();
 
-        //Game 3 example
-
-        GameBoard gBoard3 = new GameBoard();
-
-        gBoard3.playerMove(1, X);
-        gBoard3.playerMove(3, O);
-        gBoard3.playerMove(2, X);
-        gBoard3.playerMove(5, O);
-        gBoard3.playerMove(6, X);
-        gBoard3.playerMove(4, O);
-        gBoard3.playerMove(7, X);
-        gBoard3.playerMove(8, O);
-        gBoard3.playerMove(9, X);
-
-        gBoard3.showBoard();
-        gBoard3.checkForWinner();
-
-        if (gBoard3.checkForWinner()) {
-            System.out.println("Game Over!");
-        }
-
-        if (gBoard3.checkForWinner() == false) {
-            System.out.printf("Cat's game!");
+            if (gBoard.validMove(playerPosition, pList[current])) {
+                gBoard.playerMove(playerPosition, pList[current]);
+                gBoard.showBoard();
+                gBoard.checkForWinner();
+                if (gBoard.checkForWinner() == true) {
+                    System.out.println("Game Over!");
+                }
+            }
         }
     }
 }
 
-//Test for hardcoded updatd from GIT
+//Test for hard
 

@@ -63,6 +63,23 @@ public class GameBoard {
         return validMove;
     }
 
+    public boolean validMove(int position, Player p) {
+
+        boolean validMove = true;
+
+        char value = (char) ('0' + position);
+
+        char row = (char) ((position - 1) / 3);
+        char col = (char) ((position - 1) % 3);
+
+        if (gameBoard[row][col] == value) {
+            gameBoard[row][col] = p.getName();
+        } else {
+            validMove = false;
+        }
+        return validMove;
+    }
+
     /**
      * This method checks for three in a row in each
      * column and row. It also checks for three in a row in
