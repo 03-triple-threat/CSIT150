@@ -42,22 +42,22 @@ public class Lab7 {
      */
     public static DataInputStream openBinaryFile() {
         boolean fileFound = false;
-        DataInputStream fileDIS = null;
         File file;
-        Scanner inputFile;
+        DataInputStream inputFile = null;
         String fileName;
 
         try
         {
             file = new File(getFileName());
-            inputFile = new Scanner(file);
+            inputFile = new DataInputStream(new FileInputStream(file));
             JOptionPane.showMessageDialog(null, "The file was found.");
         }
         catch (FileNotFoundException e)
         {
             JOptionPane.showMessageDialog(null, "File not found.");
+            System.exit(0);
         }
-        return fileDIS;
+        return inputFile;
     }
 
     /**
@@ -100,6 +100,8 @@ public class Lab7 {
         //output the numbers and their average.
         for (double n: numbers)
             System.out.println(n);
+
+        
         // Use methods appropriately
     }
 
