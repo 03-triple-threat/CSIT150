@@ -3,10 +3,7 @@ package Lab7;
 import javax.swing.*;
 import java.io.*;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Lab7 {
 
@@ -86,6 +83,15 @@ public class Lab7 {
         return numbers;
     }
 
+    public static double calcAvg(ArrayList<Double> numbers){
+        double sum = 0;
+        for (double n: numbers)
+            sum += n;
+        return sum  / numbers.size();
+
+    }
+
+
     /**
 
      /**
@@ -101,7 +107,7 @@ public class Lab7 {
         for (double n: numbers)
             System.out.println(n);
 
-        
+        System.out.println("\nThe average of the numbers in the file are: " + calcAvg(numbers));
         // Use methods appropriately
     }
 
