@@ -38,5 +38,19 @@ public class Maze {
         }
     }
 
+    public int getRows() {return rows;}
 
+    public int getCols() {return cols;}
+
+    public int getStartRow() {return startPoint1;}
+
+    public int getStartCol() {return startPoint2;}
+
+    public int getExitRow() {return endPoint1;}
+
+    public int getExitCol() {return endPoint2;}
+
+    public char getCell(int row, int col) {}
+
+    
 }
