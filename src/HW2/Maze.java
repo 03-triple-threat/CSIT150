@@ -50,7 +50,7 @@ public class Maze {
 
     public int getExitCol() {return endPoint2;}
 
-    public char getCell(int row, int col) {}
+//    public char getCell(int row, int col) {}
 
     
 }
