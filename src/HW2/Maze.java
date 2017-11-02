@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Maze {
 
-    private double[][] maze;
+    private char[][] maze;
     int rows;
     int cols;
     int startPoint1;
@@ -50,7 +50,23 @@ public class Maze {
 
     public int getExitCol() {return endPoint2;}
 
-//    public char getCell(int row, int col) {}
+    public char getCell(int row, int col) {return maze[row][col];}
 
-    
+    public boolean openCell(int row, int col) {
+
+        boolean freeCell = true;
+
+        if(maze[row][col] != '*') {
+            freeCell = true;
+        } else {
+            freeCell = false;
+        }
+        return freeCell;
+    }
+
+    public void setCell(int row, int col, char newCh) {
+        maze[row][col] = newCh;
+    }
+
+//    public String toString() {}
 }
