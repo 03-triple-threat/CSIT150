@@ -68,5 +68,16 @@ public class Maze {
         maze[row][col] = newCh;
     }
 
-//    public String toString() {}
+    public String toString() {
+
+        String mazeOutput = "";
+
+        for (int i = 0; i < maze.length; i++) {
+            for (int j = 0; j < maze[i].length; j++) {
+                mazeOutput += maze[i][j];
+            }
+            mazeOutput += "\n";
+        }
+        return mazeOutput;
+    }
 }

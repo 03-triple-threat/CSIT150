@@ -13,10 +13,10 @@ public class Robot {
         Robot r = new Robot(maze);
     }
 
-    public int chooseMoveDirection() {}
-
-    public boolean move(int direction) {}
-
-    public boolean solved() {}
+//    public int chooseMoveDirection() {}
+//
+//    public boolean move(int direction) {}
+//
+//    public boolean solved() {}
 
 }
