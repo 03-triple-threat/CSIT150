@@ -1,16 +1,10 @@
 package Lab8;
 
-/*
- * LAb 8 starter code
- * Theater revenue problem
-  * This demonstrates a GUI program, with a Model/View/Controller architecture
- *  * comments intensionally left out to shorten code for printout
+/**
+ * Lab 8
  *
- * written by C.Anderson,  CSIS150 fall 2013
- *
- * modified by Sherri Harms, CSIT 150 Fall 2017
- *  @author canderson
- * @author harmssk
+ * Date Created: 10/30/17
+ * Created by: AJ Hurtado
  */
 
 import javax.swing.*;
@@ -28,6 +22,9 @@ public class TheaterRevenueWindow extends JFrame {
     JButton calcButton, clearButton;
 
 
+    /**
+     * Creates window and adds button listener
+     */
     public TheaterRevenueWindow()
     {
         theaterRev = new TheaterRevenues();
@@ -35,6 +32,9 @@ public class TheaterRevenueWindow extends JFrame {
         addButtonListener();
     }
 
+    /**
+     * Formats the TheaterRevenueWindow
+     */
     private void initalizeWindow()
     {
         this.setTitle("Theater Revenue Calculator");
@@ -138,6 +138,9 @@ public class TheaterRevenueWindow extends JFrame {
         this.getContentPane().add(southPanel,BorderLayout.SOUTH);
     }
 
+    /**
+     * Adds buttonListener to window
+     */
     private void addButtonListener()
     {
         // Hook up the radio buttons with the event listener
@@ -146,6 +149,9 @@ public class TheaterRevenueWindow extends JFrame {
         clearButton.addActionListener(listener);
     }
 
+    /**
+     * Clears all fields of the window
+     */
     private void clearAllFields()
     {
         pricePerAdultTxt.setText(""+theaterRev.getDefaultAdultPrice());
@@ -161,22 +167,46 @@ public class TheaterRevenueWindow extends JFrame {
     }
 
 
+    /**
+     * Calculates the total revenue of adult tickets
+     */
     private void calcAdultRevs()
     {
         //Set the TicketRevenue object values from the textfield values
         //call the TicketRevenue methods to calculate revenue
         //Update the window's textfields to show the revenue value
-        theaterRev.calcGrossAdultSales();
+
+        theaterRev.setAdultPrice(Double.parseDouble(pricePerAdultTxt.getText()));
+        theaterRev.setAdultTickets(Integer.parseInt(numberAdultTxt.getText()));
+        grossAdultRevTxt.setText(Double.toString(theaterRev.calcGrossAdultSales()));
+        netAdultRevTxt.setText(Double.toString(theaterRev.calcNetAdultSales()));
     }
 
+    /**
+     * Calculates the total revenue of child tickets
+     */
     private void calcChildRevs()
     {
+        theaterRev.setChildPrice(Double.parseDouble(pricePerChildTxt.getText()));
+        theaterRev.setChildTickets(Integer.parseInt(numberChildTxt.getText()));
+        grossChildRevTxt.setText(Double.toString(theaterRev.calcGrossChildSales()));
+        netChildRevTxt.setText(Double.toString(theaterRev.calcNetChildSales()));
     }
 
+    /**
+     * calculates the total revenue for child and adult tickets
+     */
     private void calcRevs()
     {
+        calcAdultRevs();
+        calcChildRevs();
+        totalGrossRevTxt.setText(Double.toString(theaterRev.calcTotalGross()));
+        totalNetRevTxt.setText(Double.toString(theaterRev.calcTotalNet()));
     }
 
+    /**
+     * Validates the input from the user
+     */
     private boolean validateFields()
     {
         String errorMessage = "";
@@ -195,6 +225,10 @@ public class TheaterRevenueWindow extends JFrame {
         return true;
     }
 
+    /**
+     * Validates the input of number of child tickets
+     * @return
+     */
     private String validateNumberChild()
     {
         int cTicks = 0;
@@ -224,6 +258,10 @@ public class TheaterRevenueWindow extends JFrame {
         return errorMessage;
     }
 
+    /**
+     * validates the input of the number of adult tickets
+     * @return
+     */
     private String validateNumberAdult()
     {
         int aTicks = 0;
@@ -252,6 +290,10 @@ public class TheaterRevenueWindow extends JFrame {
         return errorMessage;
     }
 
+    /**
+     * Validates adult price tickets
+     * @return errorMessage
+     */
     private String validateAdultPrice()
     {
         double aPrice = 0;
@@ -282,6 +324,10 @@ public class TheaterRevenueWindow extends JFrame {
         return errorMessage;
     }
 
+    /**
+     * Validates input for Child price tickets
+     * @return - ErrorMessage
+     */
     private String validateChildPrice()
     {
         double cPrice = 0;
@@ -320,8 +366,9 @@ public class TheaterRevenueWindow extends JFrame {
             if(e.getSource() == calcButton)
             {
                 //validate the fields and calculate revenues
-                validateAdultPrice();
-                calcAdultRevs();
+                if(validateFields()) {
+                    calcRevs();
+                }
             } else if(e.getSource() == clearButton){
                 //clear the fields
                 clearAllFields();

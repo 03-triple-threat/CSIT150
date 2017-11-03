@@ -30,7 +30,7 @@ public class Maze {
             inputScanner.hasNextLine();
             for (int i = 0; i < rows; i++) {
                 String line = inputScanner.nextLine();
-                System.out.println(line);
+//                System.out.println(line);
                 for (int j = 0; j < cols; j ++) {
                     maze[i][j] = line.charAt(j);
                 }
