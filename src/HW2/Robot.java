@@ -5,18 +5,30 @@ package HW2;
  */
 public abstract class Robot {
 
-    private int currentRow;
-    private int currentCol;
+    protected int currentRow;
+    protected int currentCol;
+    protected Maze mazeTest;
 
     public Robot (Maze maze) {
 
-//        Robot r = new Robot(maze);
+        mazeTest = maze;
+        currentRow = mazeTest.getStartRow();
+        currentCol = mazeTest.getStartCol();
+
+        mazeTest.setCell(currentRow, currentCol, 'r');
     }
 
     public abstract int chooseMoveDirection();
 
     public abstract boolean move(int direction);
     
-//    public boolean solved() {}
+    public boolean solved() {
+        boolean exit = false;
+
+        if ((currentRow == mazeTest.getExitRow() && currentCol == mazeTest.getExitCol())) {
+            exit = true;
+        }
+        return  exit;
+    }
 
 }

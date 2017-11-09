@@ -15,11 +15,11 @@ public class Maze {
     int endPoint2;
 
 
-    public Maze (File fileName) throws IOException {
+    public Maze(File fileName) throws IOException {
 
-        Scanner inputScanner = new Scanner (fileName);
+        Scanner inputScanner = new Scanner(fileName);
 
-        while(inputScanner.hasNext()) {
+        while (inputScanner.hasNext()) {
             rows = inputScanner.nextInt();
             cols = inputScanner.nextInt();
             inputScanner.nextLine();
@@ -33,42 +33,64 @@ public class Maze {
 
             for (int i = 0; i < rows; i++) {
                 String line = inputScanner.nextLine();
-                System.out.println(line);
-                for (int j = 0; j < cols; j ++) {
+                for (int j = 0; j < cols; j++) {
                     maze[i][j] = line.charAt(j);
                 }
             }
         }
     }
 
-    public int getRows() {return rows;}
+    public int getRows() {
+        return rows;
+    }
 
-    public int getCols() {return cols;}
+    public int getCols() {
+        return cols;
+    }
 
-    public int getStartRow() {return startPoint1;}
+    public int getStartRow() {
+        return startPoint1;
+    }
 
-    public int getStartCol() {return startPoint2;}
+    public int getStartCol() {
+        return startPoint2;
+    }
 
-    public int getExitRow() {return endPoint1;}
+    public int getExitRow() {
+        return endPoint1;
+    }
 
-    public int getExitCol() {return endPoint2;}
+    public int getExitCol() {
+        return endPoint2;
+    }
 
-    public char getCell(int row, int col) {return maze[row][col];}
+    public char getCell(int row, int col) {
+        return maze[row][col];
+    }
 
     public boolean openCell(int row, int col) {
 
-        boolean freeCell = true;
+        //Validate row/col is within boundaries
+        boolean freeCell = false;
 
-        if(maze[row][col] != '*') {
-            freeCell = true;
+        if (row < 0 || row >= getRows() || col < 0 || col >= getCols()) {
+            return freeCell;
         } else {
-            freeCell = false;
+            if (maze[row][col] != '*') {
+                freeCell = true;
+            } else {
+                freeCell = false;
+            }
+            return freeCell;
         }
-        return freeCell;
     }
 
+    //Validate that openCell is true before setting Cell
     public void setCell(int row, int col, char newCh) {
-        maze[row][col] = newCh;
+
+        if (openCell(row, col)) {
+            maze[row][col] = newCh;
+        }
     }
 
     public String toString() {
