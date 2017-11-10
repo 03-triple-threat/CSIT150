@@ -17,73 +17,53 @@ public class RightHandRobot extends Robot {
         if (face == 2) {
             if (mazeTest.openCell(currentRow, currentCol - 1)) {
                 face = 3;
-                return face;
             } else if (mazeTest.openCell(currentRow + 1, currentCol)) {
                 face = 2;
-                return face;
             } else if (mazeTest.openCell(currentRow, currentCol + 1)) {
                 face = 1;
-                return face;
             } else if (mazeTest.openCell(currentRow - 1, currentCol)) {
                 face = 0;
-                return face;
             }
 
         } else if (face == 3) {
             if (mazeTest.openCell(currentRow - 1, currentCol)) {
                 face = 0;
-                return face;
             } else if (mazeTest.openCell(currentRow, currentCol - 1)) {
                 face = 3;
-                return face;
             } else if (mazeTest.openCell(currentRow + 1, currentCol)) {
                 face = 2;
             } else if (mazeTest.openCell(currentRow, currentCol + 1)) {
                 face = 1;
-                return face;
             }
         } else if (face == 0)
 
         {
             if (mazeTest.openCell(currentRow, currentCol + 1)) {
                 face = 1;
-                return face;
             } else if (mazeTest.openCell(currentRow - 1, currentCol)) {
-                    face = 0;
-                    return face;
-                }
+                face = 0;
             } else if (mazeTest.openCell(currentRow, currentCol - 1)) {
-                    face = 3;
-                    return face;
-                }
-             else if (mazeTest.openCell(currentRow + 1, currentCol)) {
-                    face = 2;
-                    return face;
-                }
+                face = 3;
+            } else if (mazeTest.openCell(currentRow + 1, currentCol)) {
+                face = 2;
+            }
         } else if (face == 1)
 
         {
             if (mazeTest.openCell(currentRow + 1, currentCol)) {
                 face = 2;
-                return face;
-            } else if (!mazeTest.openCell(currentRow + 1, currentCol)) {
-                if (mazeTest.openCell(currentRow, currentCol + 1)) {
-                    face = 1;
-                    return face;
-                }
-            } else if (!(mazeTest.openCell(currentRow + 1, currentCol) && (mazeTest.openCell(currentRow, currentCol + 1)))) {
-                if (mazeTest.openCell(currentRow - 1, currentCol)) {
-                    face = 0;
-                    return face;
-                }
-            } else if (!(mazeTest.openCell(currentRow + 1, currentCol) && (mazeTest.openCell(currentRow, currentCol + 1) &&
-                    (mazeTest.openCell(currentRow - 1, currentCol))))) {
+            } else if (mazeTest.openCell(currentRow, currentCol + 1)) {
+                face = 1;
+            } else if (mazeTest.openCell(currentRow - 1, currentCol)) {
+                face = 0;
+            } else if (mazeTest.openCell(currentRow, currentCol - 1)) {
                 face = 3;
-                return face;
             }
         }
+
         return face;
     }
+
 
     public boolean move(int direction) {
         boolean robotMove = false;
@@ -112,6 +92,7 @@ public class RightHandRobot extends Robot {
                     mazeTest.setCell(currentRow, currentCol, ' ');
                     currentRow++;
                     face = 2;
+                    mazeTest.setCell(currentRow, currentCol, 'r');
                     robotMove = true;
                 }
                 break;
