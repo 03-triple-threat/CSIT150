@@ -4,7 +4,10 @@ public class RightHandRobot extends Robot {
 
     int face;
 
-
+    /**
+     * Constructor for the RightHandRobot. This class inherits from the Robot class.
+     * @param maze
+     */
     public RightHandRobot(Maze maze) {
         super(maze);
 
@@ -12,6 +15,12 @@ public class RightHandRobot extends Robot {
 
     }
 
+    /**
+     * The Robot's direction is determined by first checking the spot to the right of the
+     * direction it is facing, if that spot is taken, the robot checks the spot to the right of that,
+     * and so on until it finds an empty spot to move.
+     * @return
+     */
     public int chooseMoveDirection() {
 
         if (face == 2) {
@@ -64,7 +73,12 @@ public class RightHandRobot extends Robot {
         return face;
     }
 
-
+    /**
+     * This method moves the robot in the direction determined in the
+     * chooseMoveDirection method.
+     * @param direction
+     * @return
+     */
     public boolean move(int direction) {
         boolean robotMove = false;
 

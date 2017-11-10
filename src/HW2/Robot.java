@@ -1,7 +1,9 @@
 package HW2;
 
 /**
- * Created by ajhurtado3 on 11/2/17.
+ * The following method is an abstract method
+ * that creates the robot object. It is inherited in the RandomRobot,
+ * LeftHandRobot, and RightHandRobot classes.
  */
 public abstract class Robot {
 
@@ -9,6 +11,10 @@ public abstract class Robot {
     protected int currentCol;
     protected Maze mazeTest;
 
+    /**
+     * Constructor for the Robot object
+     * @param maze
+     */
     public Robot (Maze maze) {
 
         mazeTest = maze;
@@ -18,8 +24,18 @@ public abstract class Robot {
         mazeTest.setCell(currentRow, currentCol, 'r');
     }
 
+    /**
+     * Abstract method, the Robot chooses it's next move's direction
+     * @return
+     */
     public abstract int chooseMoveDirection();
 
+    /**
+     * Abstract method, the Robot moves in the direction that is set in the
+     * chooseMoveDirection method
+     * @param direction
+     * @return exit
+     */
     public abstract boolean move(int direction);
     
     public boolean solved() {
