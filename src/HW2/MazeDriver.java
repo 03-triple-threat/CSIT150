@@ -31,7 +31,9 @@ public class MazeDriver {
         System.out.println(maze);
         //Robot bot = new RandomRobot(maze);//this ties the robot to the maze it is in
 
-        RightHandRobot bot = new RightHandRobot(maze);
+//        RightHandRobot bot = new RightHandRobot(maze);
+
+        LeftHandRobot bot = new LeftHandRobot(maze);
 
         for (int k = 0; k < 1000000 && !bot.solved(); k++)
         //this limits the robot's moves, in case it takes too long to find the exit.
