@@ -1,14 +1,26 @@
 package HW3;
 
 public class LookAheadRobot extends FacingRobot {
+
     int face;
 
+    /**
+     * Constructor for the LookAheadRobot. This class inherits from the FacingRobot class
+     * @param maze
+     */
     public LookAheadRobot(Maze maze) {
         super(maze);
 
         face = 2;
     }
 
+    /**
+     * This method determines the next direction the LookAheadRobot will move to next.
+     * The robot will look to go straight as long as it can, if the robot cannot continue
+     * straight, it will look to go right. If it cannot go right, it will look to go left,
+     * and if it cannot go left, it will go backwards as a last resort.
+     * @return
+     */
     public int chooseMoveDirection() {
 
         if (face == 2) {
@@ -56,6 +68,12 @@ public class LookAheadRobot extends FacingRobot {
         return face;
     }
 
+    /**
+     * This method moves the robot in the direction determined in the
+     * chooseMoveDirection method.
+     * @param direction
+     * @return
+     */
     public boolean move(int direction) {
         boolean robotMove = false;
 

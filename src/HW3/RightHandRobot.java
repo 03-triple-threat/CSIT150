@@ -5,7 +5,7 @@ public class RightHandRobot extends FacingRobot {
     int face;
 
     /**
-     * Constructor for the RightHandRobot. This class inherits from the Robot class.
+     * Constructor for the RightHandRobot. This class inherits from the FacingRobot class.
      * @param maze
      */
     public RightHandRobot(Maze maze) {
