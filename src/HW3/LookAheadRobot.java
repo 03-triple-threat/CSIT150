@@ -1,10 +1,6 @@
-package HW2;
+package HW3;
 
-/**
- * Created by ajhurtado3 on 11/11/17.
- */
-public class LookAheadRobot extends Robot {
-
+public class LookAheadRobot extends FacingRobot {
     int face;
 
     public LookAheadRobot(Maze maze) {
