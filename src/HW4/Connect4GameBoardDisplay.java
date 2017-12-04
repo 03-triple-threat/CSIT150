@@ -52,6 +52,16 @@ public class Connect4GameBoardDisplay extends JPanel {
 
     public void pieceSelected(MouseEvent me) {
         selectedCol = calculateCol(me.getX(), me.getY());
-        game.markSelectedToken(selectedCol[0], selectedCol)
+        game.markSelectedToken(selectedCol[0], selectedCol[1]);
     }
+
+    public void pieceMovied(MouseEvent me){
+        selectedCol = calculateCol(me.getX(), me.getY());
+        game.setSelectedToken(selectedCol[0], selectedCol[1]);
+        repaint();
+    }
+
+
+
+
 }
