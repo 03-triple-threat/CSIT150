@@ -3,7 +3,6 @@ package HW5;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.security.Key;
 
 public class spaceInvaderDisplay extends JPanel implements ActionListener, KeyListener {
 
@@ -15,6 +14,9 @@ public class spaceInvaderDisplay extends JPanel implements ActionListener, KeyLi
     int x = 0, y = 0, velx = 0, vely = 0;
     int step = 1;
     int ballSize = 40;
+    int totalShips = 15;
+
+    private invaderFleet bots;
 
     /**
      * Constructor
@@ -27,6 +29,8 @@ public class spaceInvaderDisplay extends JPanel implements ActionListener, KeyLi
 
         t.start();
 
+        bots = new invaderFleet();
+
         this.addKeyListener(this);
         this.setFocusable(true);
         this.setFocusTraversalKeysEnabled(false);
@@ -34,9 +38,21 @@ public class spaceInvaderDisplay extends JPanel implements ActionListener, KeyLi
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawString("Click arrow keys to start ball and change direction!!", 200, 200);
-        Graphics2D g2 = (Graphics2D) g;
-        g2.fillRect(x, 902, 100, 50);
+
+//        Graphics2D g2 = (Graphics2D) g;
+
+        //background
+//        g.fillRect(1,1,1000,1000);
+
+        bots.drawFleet(g);
+
+//        //Paddle
+//        g2.setColor(Color.red);
+//        g.fillRect(x, 902, 100, 50);
+//
+//        //bullets
+//        g2.setColor(Color.BLUE);
+//        g2.fillOval(250,250,20,20);
     }
 
     public void right() {
@@ -64,6 +80,9 @@ public class spaceInvaderDisplay extends JPanel implements ActionListener, KeyLi
 
     public void actionPerformed(ActionEvent ae) {
         repaint();
+
+
+
         x += velx;
         y += vely;
         if (x > maxX)
@@ -93,6 +112,10 @@ public class spaceInvaderDisplay extends JPanel implements ActionListener, KeyLi
             } else {
                 left();
             }
+        }
+        if (code == KeyEvent.VK_SPACE) {
+            //TODO - uncomment
+            //shootBullet();
         }
     }
 
