@@ -47,4 +47,6 @@ public abstract class Robot {
         return  exit;
     }
 
+    public void setMaze(Maze inMaze){}
+
 }
