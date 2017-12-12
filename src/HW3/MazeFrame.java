@@ -10,8 +10,8 @@ import java.util.Scanner;
 public class MazeFrame extends JFrame {
 
     private File inputFile;
-    private Maze mazeWin;
-    private Robot botWindow;
+    private Maze mazeFrame;
+    private Robot bot1;
     private MazePanel panel;
     private boolean botRunning;
 
@@ -42,6 +42,10 @@ public class MazeFrame extends JFrame {
         //Set the layout of the window
         setLayout(new BorderLayout());
 
+        //add panel
+        panel = new MazePanel();
+        add(panel);
+
         //Show the window
         pack();
         setVisible(true);
@@ -49,9 +53,8 @@ public class MazeFrame extends JFrame {
 
     /**
      * Create a menu bar
-     *
      */
-    private JMenuBar buildMenuBar(){
+    private JMenuBar buildMenuBar() {
         //Create a menu bar
         JMenuBar menuBar = new JMenuBar();
 
@@ -59,17 +62,9 @@ public class MazeFrame extends JFrame {
         JMenu fileMenu = buildFileMenu();
         menuBar.add(fileMenu);
 
-        //put space between the File and the Maze menus
-        Label whiteSpace = new Label(" ");
-        menuBar.add(whiteSpace);
-
         //Create the Maze menu
         JMenu mazeMenu = buildMazeMenu();
         menuBar.add(mazeMenu);
-
-        //put space between Maze / Robot Menus
-        Label whiteSpace2 = new Label(" ");
-        menuBar.add(whiteSpace2);
 
         //Create the Robot Menu
         JMenu robotMenu = buildRobotMenu();
@@ -83,7 +78,7 @@ public class MazeFrame extends JFrame {
      *
      * @return the created File menu
      */
-    private JMenu buildFileMenu(){
+    private JMenu buildFileMenu() {
         //Create
         JMenu fileMenu = new JMenu("File");
 
@@ -95,10 +90,10 @@ public class MazeFrame extends JFrame {
         fileMenu.add(fileSolveMenuItem);
         fileMenu.add(fileExitMenuItem);
 
-        //Hook up the menu items with the listener
-        MyListener listener = new MyListener();
-        fileExitMenuItem.addActionListener(listener);
-        fileSolveMenuItem.addActionListener(listener);
+//        //Hook up the menu items with the listener
+//        MyListener listener = new MyListener();
+//        fileExitMenuItem.addActionListener(listener);
+//        fileSolveMenuItem.addActionListener(listener);
 
         return fileMenu;
     }
@@ -108,7 +103,7 @@ public class MazeFrame extends JFrame {
      *
      * @return the created Maze menu
      */
-    private JMenu buildMazeMenu(){
+    private JMenu buildMazeMenu() {
         //Create
         JMenu mazeMenu = new JMenu("Maze");
 
@@ -125,7 +120,7 @@ public class MazeFrame extends JFrame {
         return mazeMenu;
     }
 
-    private JMenu buildRobotMenu(){
+    private JMenu buildRobotMenu() {
         //Create
         JMenu robotMenu = new JMenu("Robot");
 
@@ -136,6 +131,14 @@ public class MazeFrame extends JFrame {
         loadRightHandRobotMenuItem = new JMenuItem("Right Hand Robot");
         loadLookAheadRobotMenuItem = new JMenuItem("Look Ahead Robot");
         loadRandomRobotMenuItem = new JMenuItem("Random Robot");
+
+        //Add menu items to the RobotMenu
+        robotMenu.add(loadRobotMenuItem);
+        robotMenu.add(loadFacingRobotMenuItem);
+        robotMenu.add(loadLeftHandRobotMenuItem);
+        robotMenu.add(loadRightHandRobotMenuItem);
+        robotMenu.add(loadLookAheadRobotMenuItem);
+        robotMenu.add(loadRandomRobotMenuItem);
 
         //Hook up the menu items with the listener
         MyRobotListener robotListener = new MyRobotListener();
@@ -152,36 +155,66 @@ public class MazeFrame extends JFrame {
 
     private class MyListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == fileExitMenuItem)
+            if (e.getSource() == fileExitMenuItem) {
                 System.exit(0);
-            else (e.getSource() == fileSolveMenuItem) {
-                //add code
+            } else if (e.getSource() == fileSolveMenuItem) {
+
             }
         }
     }
 
-    private class MyMazeListener implements ActionListener{
+    private class MyMazeListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if(e.getSource() == loadMazeMenuItem) {
+            if (e.getSource() == loadMazeMenuItem) {
+                inputFile = getFile();
+                mazeFrame = new Maze(inputFile);
+                panel.setMaze(mazeFrame);
+                setSize(mazeFrame.cols * CELL_SIZE + 50, mazeFrame.rows * CELL_SIZE + 100);
+                repaint();
+
             }
         }
     }
 
-    private class MyRobotListener implements ActionListener{
+    private class MyRobotListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if(e.getSource() == loadRobotMenuItem) {
-                //Add code
-            } else if(e.getSource() == loadFacingRobotMenuItem) {
-                //add Code
-            } else if(e.getSource() == loadLeftHandRobotMenuItem) {
-                //add code
-            } else if(e.getSource() == loadRightHandRobotMenuItem) {
-                //add code
-            } else if(e.getSource() == loadLookAheadRobotMenuItem) {
-                //add code
-            } else if(e.getSource() == loadRandomRobotMenuItem) {
-                //add code
+            if (e.getSource() == loadRightHandRobotMenuItem) {
+                bot1 = new RightHandRobot(mazeFrame);
+                panel.setRobot(bot1);
+                fileSolveMenuItem.setEnabled(true);
+                repaint();
             }
         }
     }
-}
+
+        public static File getFile() {
+            JFileChooser chooser;
+            try {
+
+                // Get the filename.
+                chooser = new JFileChooser();
+                int status = chooser.showOpenDialog(null);
+                if (status != JFileChooser.APPROVE_OPTION) {
+                    System.out.println("No File Chosen");
+                    System.exit(0);
+                }
+                return chooser.getSelectedFile();
+            } catch (Exception e) {
+                System.out.println("Exception: " + e.getMessage());
+                System.exit(0);
+
+            }
+            return null; //should never get here, but makes compiler happy
+        }
+
+        public static void main(String[] args) {
+            MazeFrame win = new MazeFrame();
+
+            try {
+                Thread.sleep(500);
+            }
+
+
+        }
+    }
+

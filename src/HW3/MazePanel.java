@@ -57,9 +57,7 @@ public class MazePanel extends JPanel {
 
         if(bot != null){
             g.setColor(Color.BLUE);
-            g.fillRect(bot.currentCol, bot.currentRow, BOT_SIZE, BOT_SIZE);
+            g.fillRect(bot.currentCol * CELL_SIZE, bot.currentRow * CELL_SIZE, BOT_SIZE, BOT_SIZE);
         }
-
-
     }
 }
